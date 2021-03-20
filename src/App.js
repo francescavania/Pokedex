@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./components/Navbar";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import GlobalStyle from "./GlobalStyle";
+import {  PokemonList, PokemonDetail, MyPokemon  } from './pages'
+import { ApolloProvider } from "@apollo/client";
+import ApolloClient from "apollo-boost";
+
 
 function App() {
+
+  const client = new ApolloClient({
+    uri: "https://graphql-pokeapi.vercel.app/api/graphql",
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <GlobalStyle/>
+    <ApolloProvider client={client}>
+      <Router>
+        <Switch>
+          <Route path="/" component={PokemonList} exact />
+          <Route path="/mypokemon" component={MyPokemon} exact />
+          <Route path="/:detail" component={PokemonDetail} exact />
+        </Switch>
+      </Router>
+    </ApolloProvider>
+    </>
   );
 }
 
