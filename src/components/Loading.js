@@ -4,6 +4,8 @@ import logo from '../assets/images/loading.gif';
 
 const Load = styled.div`
     padding:2rem;
+    display:flex;
+    justify-content: center;
 `;
 
 const PokeImg = styled.img`

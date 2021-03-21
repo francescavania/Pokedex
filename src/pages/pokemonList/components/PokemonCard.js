@@ -1,16 +1,17 @@
 import React from 'react'
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     width:33%;
     height:17rem;
     text-align:center;
-    padding:2rem;
-    
+    padding:3rem;
 `;
 
-const Card = styled.div`
+const Card = styled(Link)`
     cursor:pointer;
+    text-decoration:none;
 `;
 
 const PokeImg = styled.img`
@@ -35,7 +36,7 @@ const Title = styled.div`
 const PokemonCard = ({pokemon}) => {
     return (
         <Container>
-            <Card>
+            <Card to={`detail/${pokemon.name}`} key={pokemon.name}>
                 <PokeImg
                     src={pokemon.image}
                     alt=""

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 export const Button = styled(Link)`
     cursor: pointer;
-    background:#80c064;
+    /* background:#80c064; */
     padding:10px 15px;;
     white-space: nowrap;
     outline:none;
@@ -13,4 +13,5 @@ export const Button = styled(Link)`
     border-radius:10px;
     font-weight:bold;
     color:white;
+    background:${({color}) => (color == null ? '#80c064' : color)};
 `
