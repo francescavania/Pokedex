@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Navbar from "../../components/Navbar";
 import { useQuery } from "@apollo/client";
-import { GET_POKEMON } from "../../apollo/GetPokemons";
+import { GET_POKEMON } from "../../graphql/GetPokemons";
 import {Container} from "../../components/Shared";
 import Hero from './components/Hero';
 import PokemonCard from './components/PokemonCard';

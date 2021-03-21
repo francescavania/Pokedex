@@ -1,14 +1,12 @@
 import React from 'react'
 import Navbar from '../../components/Navbar'
-// import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { GET_POKEMON_DETAIL } from "../../apollo/GetPokemonDetail";
+import { GET_POKEMON_DETAIL } from "../../graphql/GetPokemonDetail";
 import {Container} from "../../components/Shared";
 import Loading from '../../components/Loading';
 import styled from "@emotion/styled";
 import { Button } from '../../components/Button';
 import Range from "./components/Range";
-// import { Range , getTrackBackground} from 'react-range';
 
 const DetailContainer = styled.div`
     background-color:white;
@@ -133,6 +131,10 @@ const PokemonDetail = (props) => {
 
     const color = loading ? null : handleColorType(pokemon.types[0].type.name) 
     console.log(color)
+
+    const catchPoke = () =>{
+      console.log('pokemon')
+    }
     return (
         <>
         <Navbar back={true} color={color}/>
@@ -168,7 +170,7 @@ const PokemonDetail = (props) => {
                       }
                     </StatisticContainer>
                     <BtnCont>
-                      <Button>Catch</Button>
+                      <Button onClick={catchPoke} to='#'>Catch</Button>
                     </BtnCont>
                 </Detail>
 

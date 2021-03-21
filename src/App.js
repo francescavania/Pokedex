@@ -4,7 +4,6 @@ import {  PokemonList, PokemonDetail, MyPokemon  } from './pages'
 import { ApolloProvider } from "@apollo/client";
 import ApolloClient from "apollo-boost";
 import Footer from './components/Footer';
-// import Navbar from './components/Navbar';
 
 
 function App() {
