@@ -143,9 +143,7 @@ const PokemonDetail = (props) => {
         pokemon:{
             Id:Date.now(),
             name:pokemon.name,
-            image:pokemon.sprites.front_default,
             nickname:nick,
-            types:pokemon.types
         }
       })
       confirmAlert({

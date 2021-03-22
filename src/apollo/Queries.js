@@ -36,6 +36,23 @@ export const GET_POKEMON_DETAIL = gql`
   }
 `;
 
+export const GET_POKEMON_CARD = gql`
+  query pokemon($name: String!) {
+    pokemon(name: $name) {
+      id
+      name
+      sprites {
+        front_default
+      }
+      types {
+        type {
+          name
+        }
+      }
+    }
+  }
+`;
+
 export const GET_POKEMON = gql`
   query pokemons($limit: Int, $offset: Int) {
     pokemons(limit: $limit, offset: $offset) {
@@ -47,10 +64,7 @@ export const GET_POKEMON = gql`
       status
       message
       results {
-        url
         name
-        image
-        id
       }
     }
   }

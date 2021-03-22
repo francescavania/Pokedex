@@ -3,21 +3,22 @@ import { useQuery } from "@apollo/client";
 import { GET_POKEMON } from "../../apollo/Queries";
 import {Container} from "../../components/Shared";
 import Hero from './components/Hero';
-import PokemonCard from './components/PokemonCard';
 import styled from "@emotion/styled";
-import {Loading, Navbar} from '../../components';
+import {Loading, Navbar, Card} from '../../components';
 import {FaArrowLeft, FaArrowRight} from 'react-icons/fa';
 
 const ContentContainer = styled.div`
   background-color:white;
-  margin-top:10px;
+  margin-top:1rem;
   min-height:45rem;
+  padding: 0 2%;
 `
 
 const ListContainer = styled.div`
     display:flex;
-    justify-content:space-evenly;
+    justify-content:space-between;
     flex-wrap: wrap;
+    
 `
 
 const Pagination = styled.div`
@@ -43,7 +44,7 @@ const ArrowRight = styled(FaArrowRight)`
 `
 
 const PokemonList = () => {
-    const [limit] = useState(15);
+    const [limit] = useState(12);
     const [offset, setOffset] = useState(0);
     const [page, setPage] = useState(1);
 
@@ -60,11 +61,11 @@ const PokemonList = () => {
     }, [data])
   
     const NextList = () => {
-      setOffset((old) => old + 15)
+      setOffset((old) => old + 12)
       setPage((old) => old + 1)
     };
     const PreviousList = () => {
-      setOffset((old) => old - 15)
+      setOffset((old) => old - 12)
       setPage((old) => old - 1)
     };
 
@@ -82,7 +83,7 @@ const PokemonList = () => {
                     <ListContainer>
                         {
                             pokemon.results.map((pokemon) => (
-                                <PokemonCard key={pokemon.name} pokemon={pokemon}/>
+                                <Card key={pokemon.name} pokemon={pokemon}/>
                             ))
                         }
                     </ListContainer>
