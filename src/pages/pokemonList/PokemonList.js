@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import Navbar from "../../components/Navbar";
 import { useQuery } from "@apollo/client";
-import { GET_POKEMON } from "../../graphql/GetPokemons";
+import { GET_POKEMON } from "../../apollo/Queries";
 import {Container} from "../../components/Shared";
 import Hero from './components/Hero';
 import PokemonCard from './components/PokemonCard';
 import styled from "@emotion/styled";
-import Loading from '../../components/Loading';
+import {Loading, Navbar} from '../../components';
 import {FaArrowLeft, FaArrowRight} from 'react-icons/fa';
 
 const ContentContainer = styled.div`
