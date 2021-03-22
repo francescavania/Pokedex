@@ -12,6 +12,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import img1 from '../../assets/images/loading.gif';
 import img2 from '../../assets/images/sukses.gif';
 import img3 from '../../assets/images/fail.gif';
+import { handleColorType } from "../../config/Color";
 
 const DetailContainer = styled.div`
     background-color:white;
@@ -55,48 +56,6 @@ const PokeTitle = styled.div`
         padding:0.5rem 0;
     }
 `
-const handleColorType = (color) => {
-    switch (color) {
-      case "bug":
-        return "#94BC4A";
-      case "dark":
-        return "#736C75";
-      case "dragon":
-        return "#6A7BAF";
-      case "electric":
-        return "#E5C531";
-      case "fairy":
-        return "#E397D1";
-      case "fighting":
-        return "#CB5F48";
-      case "fire":
-        return "#EA7A3C";
-      case "flying":
-        return "#7DA6DE";
-      case "ghost":
-        return "#846AB6";
-      case "grass":
-        return "#a4d541";
-      case "ground":
-        return "#CC9F4F";
-      case "ice":
-        return "#70CBD4";
-      case "normal":
-        return "#AAB09F";
-      case "poison":
-        return "#B468B7";
-      case "psychic":
-        return "#E5709B";
-      case "rock":
-        return "#B2A061";
-      case "steel":
-        return "#89A1B0";
-      case "water":
-        return "#539AE2";
-      default:
-        return "grey";
-    }
-  };
 
 const TypeContainer = styled.div`
     display:flex;
@@ -185,7 +144,8 @@ const PokemonDetail = (props) => {
             Id:Date.now(),
             name:pokemon.name,
             image:pokemon.sprites.front_default,
-            nickname:nick
+            nickname:nick,
+            types:pokemon.types
         }
       })
       confirmAlert({

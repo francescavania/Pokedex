@@ -2,7 +2,7 @@ import React from 'react'
 import styled from "@emotion/styled";
 import {Container} from "./Shared";
 import Pokeball from "../assets/images/pokeball.svg";
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import { Button } from './Button';
 // import { jsx, css } from '@emotion/react'
 import { IoChevronBack } from "react-icons/io5";
@@ -34,13 +34,13 @@ const NavBtn = styled.div`
     margin-right: 0.8rem;
 `;
 
-const Back = styled(Link)`
+const Back = styled.div`
     text-decoration:none;
     margin-left: 0.8rem;
     display:flex;
     justify-content:center;
     align-items:center;
-
+    cursor:pointer;
     p{
         font-size:1.4rem;
         color:white;
@@ -58,13 +58,16 @@ const ArrowBack = styled(IoChevronBack)`
 
 
 const Navbar = ({back=false,color=null}) => {
+    const goBack = () =>{
+        window.history.back();
+      }
     return (
         <NavContainer color={color}>
             <Container>
                 <Nav>
                     {
                         back ? 
-                        <Back to={`/`}>
+                        <Back onClick={goBack}>
                             <ArrowBack/>
                             <p>Back</p>
                         </Back>

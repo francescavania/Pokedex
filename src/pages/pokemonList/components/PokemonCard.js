@@ -32,17 +32,17 @@ const Title = styled.div`
     }
 `
 
-const Button = styled.button`
-    cursor: pointer;
-    border:none;
-    font-size: 1rem;
-    border-radius:3px;
-    font-weight:bold;
-    color:white;
-    background:${({cancel}) => (cancel ? 'red' : '#03ac0e')};
-    padding:0.5rem 1rem;
-    margin:0 1rem;
-`
+// const Button = styled.button`
+//     cursor: pointer;
+//     border:none;
+//     font-size: 1rem;
+//     border-radius:3px;
+//     font-weight:bold;
+//     color:white;
+//     background:${({cancel}) => (cancel ? 'red' : '#03ac0e')};
+//     padding:0.5rem 1rem;
+//     margin:0 1rem;
+// `
 
 
 const PokemonCard = ({pokemon}) => {
