@@ -23,7 +23,7 @@ const BgCardImage = styled.img`
 
 const CardContainer = styled(Link)`
     background:${({type}) => handleColorType(type)};
-    min-height:10rem;
+    height:10rem;
     border-radius:1rem;
     text-decoration:none;
     display:flex;
@@ -82,7 +82,6 @@ const ButtonCont = styled.div`
 `;
 
 const ReleaseButton = styled.button`
-    /* text-align: center; */
     background-color: #03ac0e;
     color: white;
     font-size:1rem;
@@ -107,9 +106,11 @@ const Card = ({pokemon, myPokemon = false, onClick}) => {
         <>
         {
             loading ? 
-            <CardContainer to={`#`}>
-                <Skeleton /> 
-            </CardContainer>
+            <CardBind>
+                <CardContainer to={`#`}>
+                    <Skeleton /> 
+                </CardContainer>
+            </CardBind>
             :
 
             <CardBind>
