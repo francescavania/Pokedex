@@ -4,13 +4,13 @@ import styled from "@emotion/styled";
 import {Container} from "../components/Shared";
 import titleImg from '../assets/images/mypoke.png';
 import dispatch from '../apollo/Reducer';
-import { GET_MY_POKEMON } from "../apollo/Queries";
-import { useQuery } from "@apollo/client";
+import { useReactiveVar } from "@apollo/client";
 import { Card } from "../components";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import question from '../assets/images/question.png';
 import run from '../assets/images/run.gif';
+import { myPokemons } from "../apollo/Reducer";
 
 const TitleContainer = styled.div`
     height:15rem;
@@ -71,8 +71,7 @@ const AlertButton = styled.button`
 `
 
 const MyPokemon = () => {
-    const {data,} = useQuery(GET_MY_POKEMON)
-    console.log(data,"data myPokemons")
+    const myPokemonsList = useReactiveVar(myPokemons);
 
     const releasePokemon = (id) =>{
         dispatch({
@@ -128,7 +127,7 @@ const MyPokemon = () => {
             <ContentContainer>
                 <ListContainer>
                     {
-                        data.myPokemons.map((pokemon) => (
+                        myPokemonsList.map((pokemon) => (
                             <Card key={pokemon.Id.toString()} pokemon={pokemon} onClick={() => handleRelease(pokemon.Id)} myPokemon={true}/>
                         ))
                     }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useQuery } from "@apollo/client";
+import { useQuery, useReactiveVar  } from "@apollo/client";
 import { GET_POKEMON_DETAIL } from "../../apollo/Queries";
 import {Container} from "../../components/Shared";
 import styled from "@emotion/styled";
@@ -13,6 +13,7 @@ import img3 from '../../assets/images/fail.gif';
 import { handleColorType } from "../../config/Color";
 import {useParams} from "react-router-dom";
 import TabDetail from "./components/TabDetail";
+import { myPokemons } from "../../apollo/Reducer";
 
 const DetailContainer = styled.div`
     background-color:white;
@@ -117,6 +118,7 @@ const AlertButton = styled.button`
 
 const PokemonDetail = (props) => {
     let { name } = useParams();
+    const myPokemonsList = useReactiveVar(myPokemons);
 
     const { data, loading } = useQuery(GET_POKEMON_DETAIL, {
         variables: { name },
@@ -151,6 +153,23 @@ const PokemonDetail = (props) => {
       })
     }
 
+    const checkNick = (nick) =>{
+      if(nick == undefined){
+        alert('please give your pokemon a nickname')
+      }else{
+        let found = myPokemonsList.find(function (pokemon) {
+          return pokemon.nickname == nick;
+        });
+  
+        if(found){
+          alert("You already have pokemon with this nickname!")
+        }else{
+          handleSavePokemon(nick)
+        }
+      }
+
+    }
+
     const catchPoke = (e) =>{
       e.preventDefault()
       let catched = Math.random() >= 0.5
@@ -170,7 +189,7 @@ const PokemonDetail = (props) => {
                 <AlertButton
                   onClick={(e) => {
                     e.preventDefault()
-                    handleSavePokemon(nick);
+                    checkNick(nick)
                   }}
                 >
                   Save

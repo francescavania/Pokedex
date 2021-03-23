@@ -70,8 +70,3 @@ export const GET_POKEMON = gql`
   }
 `;
 
-export const GET_MY_POKEMON = gql`
-    query{
-        myPokemons
-    }
-`

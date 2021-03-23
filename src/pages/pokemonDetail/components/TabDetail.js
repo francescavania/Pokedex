@@ -46,7 +46,7 @@ const TabDetail = ({pokemon, color}) => {
             <MovesContainer>
                 {
                 pokemon.moves.map((move) =>(
-                    <Move color={color}>{move.move.name.charAt(0).toUpperCase()+ move.move.name.slice(1)}</Move>
+                    <Move key={move.move.name} color={color}>{move.move.name.charAt(0).toUpperCase()+ move.move.name.slice(1)}</Move>
                 ))
                 }
             </MovesContainer>

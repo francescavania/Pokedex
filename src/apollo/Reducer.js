@@ -8,7 +8,6 @@ if(localStorage.getItem("myPokemons")){
 }
 
 function dispatch(action){
-    // console.log(action,"masuk reducer")
     switch(action.type){
         case 'ADD_POKEMON':{
             localStorage.setItem("myPokemons",JSON.stringify([...myPokemons(),action.pokemon]))
