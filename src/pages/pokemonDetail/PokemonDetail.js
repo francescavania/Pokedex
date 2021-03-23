@@ -4,7 +4,6 @@ import { GET_POKEMON_DETAIL } from "../../apollo/Queries";
 import {Container} from "../../components/Shared";
 import styled from "@emotion/styled";
 import { Button , Loading, Navbar} from '../../components';
-import Range from "./components/Range";
 import dispatch from '../../apollo/Reducer';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; 
@@ -13,15 +12,13 @@ import img2 from '../../assets/images/sukses.gif';
 import img3 from '../../assets/images/fail.gif';
 import { handleColorType } from "../../config/Color";
 import {useParams} from "react-router-dom";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import TabDetail from "./components/TabDetail";
 
 const DetailContainer = styled.div`
     background-color:white;
     padding-top:6rem;
     min-height:70.5rem;
 `
-
 const LoadingContainer = styled.div`
     display:flex;
     justify-content:center;
@@ -30,12 +27,10 @@ const LoadingContainer = styled.div`
     height:60rem;
 
 `
-
 const Detail = styled.div`
     padding:2rem;
 
 `
-
 const DetailTop = styled.div`
     display:flex;
     padding-bottom:1rem;
@@ -63,13 +58,9 @@ const PokeTitle = styled.div`
         padding:0.5rem 0;
     }
 `
-
-
-
 const TypeContainer = styled.div`
     display:flex;
-`;
-
+`
 const Type = styled.div`
     text-align: center;
     background-color: ${({ color }) => handleColorType(color)};
@@ -78,17 +69,10 @@ const Type = styled.div`
     padding:0.6rem 0.7rem;
     margin-right:0.5rem;
     border-radius:5px;
-`;
-
+`
 const BtnCont = styled.div`
     padding-top:1rem;
-`;
-
-const StatisticContainer = styled.div`
-    margin-right:1rem;
-    padding-top:1.5rem;
-`;
-
+`
 const AlertContainer = styled.div`
     /* padding: 0 3rem 3rem 3rem; */
     padding: 3rem;
@@ -118,8 +102,7 @@ const AlertContainer = styled.div`
       border: 1px solid #ccc;
       margin-bottom:1rem;
     }
-`;
-
+`
 const AlertButton = styled.button`
     cursor: pointer;
     border:none;
@@ -131,22 +114,6 @@ const AlertButton = styled.button`
     padding:1rem 1.5rem;
     margin:0 1rem;
 `
-const TabsContainer = styled(Tabs)`
-    min-height:40rem;
-    font-size: 3rem;
-`
-const MovesContainer = styled.div`
-    display:flex;
-    flex-wrap:wrap;
-`;
-
-const Move = styled.div`
-    background-color:${({ color }) => (color)};
-    padding:0.7rem;
-    font-size:1.2rem;
-    margin:0.2rem;
-    border-radius:5px;
-`;
 
 const PokemonDetail = (props) => {
     let { name } = useParams();
@@ -157,12 +124,9 @@ const PokemonDetail = (props) => {
 
     const { pokemon } = data || {}
 
-    console.log(pokemon,"pokemon")
-
     const color = loading ? null : handleColorType(pokemon.types[0].type.name) 
 
     const handleSavePokemon = (nick) =>{
-      console.log(nick,"nick di handle save")
       dispatch({
         type:"ADD_POKEMON",
         pokemon:{
@@ -258,37 +222,8 @@ const PokemonDetail = (props) => {
                         <Button onClick={catchPoke} to='#'>Catch</Button>
                       </BtnCont>
                     </DetailTop>
-                    <TabsContainer>
-                      <TabList>
-                        <Tab>Statistic</Tab>
-                        <Tab>Moves</Tab>
-                      </TabList>
-
-                      <TabPanel>
-                        <StatisticContainer>
-                        {
-                          pokemon.stats.map((stat) =>(
-                            <Range name={stat.stat.name.charAt(0).toUpperCase()+ stat.stat.name.slice(1)} key={stat.stat.name} value={stat.base_stat} color={color}/>
-                          ))
-                        }
-                        </StatisticContainer>
-                      </TabPanel>
-                      <TabPanel>
-                        <MovesContainer>
-                          {
-                            pokemon.moves.map((move) =>(
-                              <Move color={color}>{move.move.name.charAt(0).toUpperCase()+ move.move.name.slice(1)}</Move>
-                            ))
-                          }
-                        </MovesContainer>
-                      </TabPanel>
-                    </TabsContainer>
-                    
-                    {/* <BtnCont>
-                      <Button onClick={catchPoke} to='#'>Catch</Button>
-                    </BtnCont> */}
+                    <TabDetail pokemon={pokemon} color={color}/>
                 </Detail>
-
             } 
             </DetailContainer>
         </Container>
