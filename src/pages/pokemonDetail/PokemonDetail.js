@@ -157,7 +157,8 @@ const PokemonDetail = (props) => {
     }
 
     const checkNick = (nick) =>{
-      if(nick === undefined){
+      console.log(nick,"nick check")
+      if(nick === undefined || nick === ''){
         alert('please give your pokemon a nickname')
       }else{
         let found = myPokemonsList.find(function (pokemon) {
@@ -187,7 +188,7 @@ const PokemonDetail = (props) => {
                 <img src={img1} alt=''/>
                 <h1>Pokemon Catched!</h1>
                 <p>Give a nickname for your pokemon..</p>
-                <input type="text" name="nickname" placeholder="Nickname (max. 10 character)" onChange={(e) => {nick = e.target.value}}/>
+                <input type="text" name="nickname" maxLength={10}  placeholder="Nickname (max. 10 character)" onChange={(e) => {nick = e.target.value}}/>
                 <AlertButton onClick={onClose} cancel={true}>Release</AlertButton>
                 <AlertButton
                   onClick={(e) => {
