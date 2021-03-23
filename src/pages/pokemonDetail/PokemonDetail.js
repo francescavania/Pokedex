@@ -13,6 +13,9 @@ import img1 from '../../assets/images/loading.gif';
 import img2 from '../../assets/images/sukses.gif';
 import img3 from '../../assets/images/fail.gif';
 import { handleColorType } from "../../config/Color";
+import {
+  useParams
+} from "react-router-dom";
 
 const DetailContainer = styled.div`
     background-color:white;
@@ -36,15 +39,15 @@ const Detail = styled.div`
 
 const DetailTop = styled.div`
     display:flex;
-    padding-bottom:2rem;
+    padding-bottom:0.5rem;
 
 `
 const PokeImg = styled.img`
     /* padding:2rem; */
-    width:15rem;
+    max-width:15rem;
 `
 const PokeTitle = styled.div`
-    padding:0 1.5rem;
+    padding:0 3rem;
     flex:2;
 
     p{
@@ -56,6 +59,12 @@ const PokeTitle = styled.div`
         padding:0.5rem 0;
     }
 `
+
+const MovesContainer = styled.div`
+    display:flex;
+    height:10rem;
+    background-color:#f0f0f0;
+`;
 
 const TypeContainer = styled.div`
     display:flex;
@@ -79,6 +88,7 @@ const BtnCont = styled.div`
 
 const StatisticContainer = styled.div`
     margin-right:1rem;
+    padding-top:1.5rem;
 `;
 
 const AlertContainer = styled.div`
@@ -125,8 +135,7 @@ const AlertButton = styled.button`
 `
 
 const PokemonDetail = (props) => {
-
-    const { name } = props.match.params;
+    let { name } = useParams();
 
     const { data, loading } = useQuery(GET_POKEMON_DETAIL, {
         variables: { name },
@@ -227,6 +236,9 @@ const PokemonDetail = (props) => {
                             </TypeContainer>
                         </PokeTitle>
                     </DetailTop>
+                    <MovesContainer>
+                      
+                    </MovesContainer>
                     <StatisticContainer>
                       {
                         pokemon.stats.map((stat) =>(

@@ -2,10 +2,9 @@ import React from 'react'
 import styled from "@emotion/styled";
 import {Container} from "./Shared";
 import Pokeball from "../assets/images/pokeball.svg";
-// import {Link} from 'react-router-dom'
 import { Button } from './Button';
-// import { jsx, css } from '@emotion/react'
 import { IoChevronBack } from "react-icons/io5";
+import { useHistory } from "react-router-dom";
 
 const NavContainer = styled.nav`
     background-color:${({color}) => (color == null ? '#03ac0e' : color)};
@@ -24,7 +23,6 @@ const Nav = styled.div`
 `;
 
 const Logo = styled.img`
-    cursor:pointer;
     text-decoration:none;
     width:5rem;
     height:5rem;
@@ -58,16 +56,14 @@ const ArrowBack = styled(IoChevronBack)`
 
 
 const Navbar = ({back=false,color=null}) => {
-    const goBack = () =>{
-        window.history.back();
-      }
+    let history = useHistory();
     return (
         <NavContainer color={color}>
             <Container>
                 <Nav>
                     {
                         back ? 
-                        <Back onClick={goBack}>
+                        <Back onClick={() => history.goBack()}>
                             <ArrowBack/>
                             <p>Back</p>
                         </Back>

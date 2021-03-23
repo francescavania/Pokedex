@@ -1,14 +1,11 @@
 import React from 'react'
-// import { ApolloConsumer } from '@apollo/client';
 import { Navbar} from '../components';
 import styled from "@emotion/styled";
 import {Container} from "../components/Shared";
-// import PokemonCard from './pokemonList/components/PokemonCard';
 import titleImg from '../assets/images/mypoke.png';
-// import dispatch from '../apollo/Reducer';
+import dispatch from '../apollo/Reducer';
 import { GET_MY_POKEMON } from "../apollo/Queries";
 import { useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
 import { Card } from "../components";
 
 const TitleContainer = styled.div`
@@ -40,10 +37,12 @@ const MyPokemon = () => {
     const {data,} = useQuery(GET_MY_POKEMON)
     console.log(data,"data myPokemons")
 
-    const handleRelease = (e) =>{
-        
-        console.log(e.target)
-        console.log("delete")
+    const handleRelease = (id) =>{
+        console.log(id)
+        dispatch({
+            type:"DELETE_POKEMON",
+            pokemon:id
+          })
     }
     return (
         <>
@@ -59,7 +58,7 @@ const MyPokemon = () => {
                 <ListContainer>
                     {
                         data.myPokemons.map((pokemon) => (
-                            <Card key={pokemon.Id.toString()} pokemon={pokemon} myPokemon={true}/>
+                            <Card key={pokemon.Id.toString()} pokemon={pokemon} onClick={() => handleRelease(pokemon.Id)} myPokemon={true}/>
                         ))
                     }
                 </ListContainer>
