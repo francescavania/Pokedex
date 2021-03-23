@@ -93,14 +93,13 @@ const MyPokemon = () => {
           })
     }
 
-    const handleRelease = (id) =>{
-        console.log(id)
+    const handleRelease = (id,nickname) =>{
         confirmAlert({
             customUI: ({ onClose }) => {
               return (
                 <AlertContainer>
                     <img src={question} alt=''/>
-                    <h1>Release Pokemon?</h1>
+                    <h1>Release {nickname.charAt(0).toUpperCase()+ nickname.slice(1)}?</h1>
                     <AlertButton onClick={onClose} cancel={true}>Cancel</AlertButton>
                     <AlertButton
                     onClick={() => {
@@ -128,7 +127,7 @@ const MyPokemon = () => {
                 <ListContainer>
                     {
                         myPokemonsList.map((pokemon) => (
-                            <Card key={pokemon.Id.toString()} pokemon={pokemon} onClick={() => handleRelease(pokemon.Id)} myPokemon={true}/>
+                            <Card key={pokemon.Id.toString()} pokemon={pokemon} onClick={() => handleRelease(pokemon.Id,pokemon.nickname)} myPokemon={true}/>
                         ))
                     }
                 </ListContainer>
