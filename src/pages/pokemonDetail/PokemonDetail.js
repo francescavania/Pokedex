@@ -14,6 +14,7 @@ import { handleColorType } from "../../config/Color";
 import {useParams} from "react-router-dom";
 import TabDetail from "./components/TabDetail";
 import { myPokemons } from "../../apollo/Reducer";
+import { useHistory } from "react-router-dom";
 
 const DetailContainer = styled.div`
     background-color:white;
@@ -117,6 +118,7 @@ const AlertButton = styled.button`
 `
 
 const PokemonDetail = (props) => {
+    const history = useHistory();
     let { name } = useParams();
     const myPokemonsList = useReactiveVar(myPokemons);
 
@@ -139,14 +141,15 @@ const PokemonDetail = (props) => {
       })
       confirmAlert({
         customUI: ({ onClose }) => {
-          const timer = setTimeout(() => {
+          const handleClick = () => {
+            history.push("/myPokemon");
             onClose()
-          }, 4000);
+          }
           return (
             <AlertContainer>
               <img src={img2} alt=''/>
               <h1>Pokemon Saved!</h1>
-              <AlertButton onClick={onClose}>My Pokemon</AlertButton>
+              <AlertButton onClick={handleClick}>My Pokemon</AlertButton>
             </AlertContainer>
           );
         }
