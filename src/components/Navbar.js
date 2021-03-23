@@ -5,6 +5,9 @@ import Pokeball from "../assets/images/pokeball.svg";
 import { Button } from './Button';
 import { IoChevronBack } from "react-icons/io5";
 import { useHistory } from "react-router-dom";
+import { GET_MY_POKEMON } from "../apollo/Queries";
+import { useQuery } from "@apollo/client";
+
 
 const NavContainer = styled.nav`
     background-color:${({color}) => (color == null ? '#03ac0e' : color)};
@@ -57,6 +60,8 @@ const ArrowBack = styled(IoChevronBack)`
 
 const Navbar = ({back=false,color=null}) => {
     let history = useHistory();
+    const {data,} = useQuery(GET_MY_POKEMON)
+
     return (
         <NavContainer color={color}>
             <Container>
@@ -71,7 +76,7 @@ const Navbar = ({back=false,color=null}) => {
                         <Logo src={Pokeball} alt=""/>
                     }
                     <NavBtn>
-                        <Button to="/mypokemon">You have 0 Pokemon</Button>
+                        <Button to="/mypokemon">You have {data.myPokemons.length} Pokemon</Button>
                     </NavBtn>
                 </Nav>
             </Container>

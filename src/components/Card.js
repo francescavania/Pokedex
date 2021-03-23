@@ -9,7 +9,6 @@ import Skeleton from 'react-loading-skeleton';
 
 const CardBind = styled.div`
     width:49%;
-    /* height:15rem; */
     margin-top:1rem;
     position: relative;
 `
@@ -100,7 +99,6 @@ const Card = ({pokemon, myPokemon = false, onClick}) => {
         variables: { name },
     });
     const { pokemon : poke } = data || {}
-    console.log(poke)
     
     return (
         <>

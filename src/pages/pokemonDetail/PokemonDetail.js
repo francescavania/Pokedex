@@ -1,10 +1,9 @@
 import React from 'react'
-import Navbar from '../../components/Navbar'
 import { useQuery } from "@apollo/client";
 import { GET_POKEMON_DETAIL } from "../../apollo/Queries";
 import {Container} from "../../components/Shared";
 import styled from "@emotion/styled";
-import { Button , Loading} from '../../components';
+import { Button , Loading, Navbar} from '../../components';
 import Range from "./components/Range";
 import dispatch from '../../apollo/Reducer';
 import { confirmAlert } from 'react-confirm-alert';
@@ -13,14 +12,14 @@ import img1 from '../../assets/images/loading.gif';
 import img2 from '../../assets/images/sukses.gif';
 import img3 from '../../assets/images/fail.gif';
 import { handleColorType } from "../../config/Color";
-import {
-  useParams
-} from "react-router-dom";
+import {useParams} from "react-router-dom";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 const DetailContainer = styled.div`
     background-color:white;
     padding-top:6rem;
-    height:70.5rem;
+    min-height:70.5rem;
 `
 
 const LoadingContainer = styled.div`
@@ -39,7 +38,7 @@ const Detail = styled.div`
 
 const DetailTop = styled.div`
     display:flex;
-    padding-bottom:0.5rem;
+    padding-bottom:1rem;
 
 `
 const PokeImg = styled.img`
@@ -62,8 +61,7 @@ const PokeTitle = styled.div`
 
 const MovesContainer = styled.div`
     display:flex;
-    height:10rem;
-    background-color:#f0f0f0;
+    flex-wrap:wrap;
 `;
 
 const TypeContainer = styled.div`
@@ -133,6 +131,10 @@ const AlertButton = styled.button`
     padding:1rem 1.5rem;
     margin:0 1rem;
 `
+const TabsContainer = styled(Tabs)`
+    min-height:40rem;
+    font-size: 3rem;
+`
 
 const PokemonDetail = (props) => {
     let { name } = useParams();
@@ -142,6 +144,8 @@ const PokemonDetail = (props) => {
     });
 
     const { pokemon } = data || {}
+
+    console.log(pokemon,"pokemon")
 
     const color = loading ? null : handleColorType(pokemon.types[0].type.name) 
 
@@ -168,8 +172,8 @@ const PokemonDetail = (props) => {
       })
     }
 
-    const catchPoke = () =>{
-      
+    const catchPoke = (e) =>{
+      e.preventDefault()
       let catched = Math.random() >= 0.5
       let nick 
 
@@ -182,7 +186,7 @@ const PokemonDetail = (props) => {
                 <img src={img1} alt=''/>
                 <h1>Pokemon Catched!</h1>
                 <p>Give a nickname for your pokemon..</p>
-                <input type="text" name="nickname" placeholder="Nickname" onChange={(e) => {nick = e.target.value}}/>
+                <input type="text" name="nickname" placeholder="Nickname (max. 10 character)" onChange={(e) => {nick = e.target.value}}/>
                 <AlertButton onClick={onClose} cancel={true}>Release</AlertButton>
                 <AlertButton
                   onClick={() => {
@@ -196,6 +200,7 @@ const PokemonDetail = (props) => {
           }
         })
       }else{
+        
         confirmAlert({
           customUI: ({ onClose }) => {
             return (
@@ -236,16 +241,32 @@ const PokemonDetail = (props) => {
                             </TypeContainer>
                         </PokeTitle>
                     </DetailTop>
-                    <MovesContainer>
-                      
-                    </MovesContainer>
-                    <StatisticContainer>
-                      {
-                        pokemon.stats.map((stat) =>(
-                          <Range name={stat.stat.name.charAt(0).toUpperCase()+ stat.stat.name.slice(1)} key={stat.stat.name} value={stat.base_stat} color={color}/>
-                        ))
-                      }
-                    </StatisticContainer>
+                    <TabsContainer>
+                      <TabList>
+                        <Tab>Statistic</Tab>
+                        <Tab>Moves</Tab>
+                      </TabList>
+
+                      <TabPanel>
+                        <StatisticContainer>
+                        {
+                          pokemon.stats.map((stat) =>(
+                            <Range name={stat.stat.name.charAt(0).toUpperCase()+ stat.stat.name.slice(1)} key={stat.stat.name} value={stat.base_stat} color={color}/>
+                          ))
+                        }
+                        </StatisticContainer>
+                      </TabPanel>
+                      <TabPanel>
+                        <MovesContainer>
+                          {
+                            pokemon.moves.map((move) =>(
+                              <p>{move.move.name}</p>
+                            ))
+                          }
+                        </MovesContainer>
+                      </TabPanel>
+                    </TabsContainer>
+                    
                     <BtnCont>
                       <Button onClick={catchPoke} to='#'>Catch</Button>
                     </BtnCont>
