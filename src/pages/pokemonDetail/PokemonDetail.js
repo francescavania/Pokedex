@@ -154,11 +154,11 @@ const PokemonDetail = (props) => {
     }
 
     const checkNick = (nick) =>{
-      if(nick == undefined){
+      if(nick === undefined){
         alert('please give your pokemon a nickname')
       }else{
         let found = myPokemonsList.find(function (pokemon) {
-          return pokemon.nickname == nick;
+          return pokemon.nickname.toLowerCase() === nick.toLowerCase();
         });
   
         if(found){
