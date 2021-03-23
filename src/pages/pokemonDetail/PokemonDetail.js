@@ -137,6 +137,9 @@ const PokemonDetail = (props) => {
       })
       confirmAlert({
         customUI: ({ onClose }) => {
+          const timer = setTimeout(() => {
+            onClose()
+          }, 4000);
           return (
             <AlertContainer>
               <img src={img2} alt=''/>
@@ -165,7 +168,8 @@ const PokemonDetail = (props) => {
                 <input type="text" name="nickname" placeholder="Nickname (max. 10 character)" onChange={(e) => {nick = e.target.value}}/>
                 <AlertButton onClick={onClose} cancel={true}>Release</AlertButton>
                 <AlertButton
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault()
                     handleSavePokemon(nick);
                   }}
                 >
@@ -179,6 +183,9 @@ const PokemonDetail = (props) => {
         
         confirmAlert({
           customUI: ({ onClose }) => {
+            const timer = setTimeout(() => {
+              onClose()
+            }, 1500);
             return (
               <AlertContainer>
                 <img src={img3} alt=''/>
