@@ -39,6 +39,11 @@ const Detail = styled.div`
 const DetailTop = styled.div`
     display:flex;
     padding-bottom:1rem;
+    justify-content:space-between;
+
+`
+const DetailTopLeft = styled.div`
+    display:flex;
 
 `
 const PokeImg = styled.img`
@@ -59,10 +64,7 @@ const PokeTitle = styled.div`
     }
 `
 
-const MovesContainer = styled.div`
-    display:flex;
-    flex-wrap:wrap;
-`;
+
 
 const TypeContainer = styled.div`
     display:flex;
@@ -79,9 +81,7 @@ const Type = styled.div`
 `;
 
 const BtnCont = styled.div`
-    justify-content:center;
-    display:flex;
-    padding-top:3rem;
+    padding-top:1rem;
 `;
 
 const StatisticContainer = styled.div`
@@ -135,6 +135,18 @@ const TabsContainer = styled(Tabs)`
     min-height:40rem;
     font-size: 3rem;
 `
+const MovesContainer = styled.div`
+    display:flex;
+    flex-wrap:wrap;
+`;
+
+const Move = styled.div`
+    background-color:${({ color }) => (color)};
+    padding:0.7rem;
+    font-size:1.2rem;
+    margin:0.2rem;
+    border-radius:5px;
+`;
 
 const PokemonDetail = (props) => {
     let { name } = useParams();
@@ -227,6 +239,7 @@ const PokemonDetail = (props) => {
                 :
                 <Detail>
                     <DetailTop>
+                      <DetailTopLeft>
                         <PokeImg
                             src={pokemon.sprites.front_default}
                             alt=""
@@ -240,6 +253,10 @@ const PokemonDetail = (props) => {
                                 ))}
                             </TypeContainer>
                         </PokeTitle>
+                      </DetailTopLeft>
+                      <BtnCont>
+                        <Button onClick={catchPoke} to='#'>Catch</Button>
+                      </BtnCont>
                     </DetailTop>
                     <TabsContainer>
                       <TabList>
@@ -260,16 +277,16 @@ const PokemonDetail = (props) => {
                         <MovesContainer>
                           {
                             pokemon.moves.map((move) =>(
-                              <p>{move.move.name}</p>
+                              <Move color={color}>{move.move.name.charAt(0).toUpperCase()+ move.move.name.slice(1)}</Move>
                             ))
                           }
                         </MovesContainer>
                       </TabPanel>
                     </TabsContainer>
                     
-                    <BtnCont>
+                    {/* <BtnCont>
                       <Button onClick={catchPoke} to='#'>Catch</Button>
-                    </BtnCont>
+                    </BtnCont> */}
                 </Detail>
 
             } 
