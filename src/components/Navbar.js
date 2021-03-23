@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "@emotion/styled";
-import {Container} from "./Shared";
+import {Container} from "./SharedStyle";
 import Pokeball from "../assets/images/pokeball.svg";
 import { Button } from './Button';
 import { IoChevronBack } from "react-icons/io5";

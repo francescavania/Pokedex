@@ -1,20 +1,20 @@
 import React from 'react'
-import { useQuery, useReactiveVar  } from "@apollo/client";
-import { GET_POKEMON_DETAIL } from "../../apollo/Queries";
-import {Container} from "../../components/Shared";
 import styled from "@emotion/styled";
+import {Container, AlertContainer, AlertButton} from "../../components/SharedStyle";
 import { Button , Loading, Navbar} from '../../components';
-import dispatch from '../../apollo/Reducer';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; 
 import img1 from '../../assets/images/loading.gif';
 import img2 from '../../assets/images/sukses.gif';
 import img3 from '../../assets/images/fail.gif';
 import { handleColorType } from "../../config/Color";
-import {useParams} from "react-router-dom";
+import {useParams , useHistory} from "react-router-dom";
 import TabDetail from "./components/TabDetail";
+//Apollo
+import { useQuery, useReactiveVar  } from "@apollo/client";
+import { GET_POKEMON_DETAIL } from "../../apollo/Queries";
 import { myPokemons } from "../../apollo/Reducer";
-import { useHistory } from "react-router-dom";
+import dispatch from '../../apollo/Reducer';
 
 const DetailContainer = styled.div`
     background-color:white;
@@ -27,24 +27,17 @@ const LoadingContainer = styled.div`
     align-items:center;
     flex-direction:column;
     height:60rem;
-
 `
 const Detail = styled.div`
     padding:2rem;
-
 `
 const DetailTop = styled.div`
     display:flex;
     padding-bottom:1rem;
     justify-content:space-between;
-
 `
-const DetailTopLeft = styled.div`
-    display:flex;
 
-`
 const PokeImg = styled.img`
-    /* padding:2rem; */
     max-width:15rem;
 `
 const PokeTitle = styled.div`
@@ -60,7 +53,7 @@ const PokeTitle = styled.div`
         padding:0.5rem 0;
     }
 `
-const TypeContainer = styled.div`
+const Flex = styled.div`
     display:flex;
 `
 const Type = styled.div`
@@ -74,47 +67,6 @@ const Type = styled.div`
 `
 const BtnCont = styled.div`
     padding-top:1rem;
-`
-const AlertContainer = styled.div`
-    /* padding: 0 3rem 3rem 3rem; */
-    padding: 3rem;
-    background-color:white;
-    box-shadow: 0 4px 8px rgb(204 204 204);
-    align-items:center;
-    text-align:center;
-
-    h1{
-      font-size: 3rem;
-      padding-bottom:0.5rem;
-    }
-    p{
-      font-size: 1.4rem;
-      padding-bottom:1rem;
-    }
-    img{
-      max-width:12rem;
-      padding-bottom:1rem;
-    }
-    input{
-      width:100%;
-      font-size:1.4rem;
-      padding:0.5rem;
-      background-color:white;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      margin-bottom:1rem;
-    }
-`
-const AlertButton = styled.button`
-    cursor: pointer;
-    border:none;
-    font-size: 1.4rem;
-    border-radius:3px;
-    font-weight:bold;
-    color:white;
-    background:${({cancel}) => (cancel ? 'red' : '#03ac0e')};
-    padding:1rem 1.5rem;
-    margin:0 1rem;
 `
 
 const PokemonDetail = (props) => {
@@ -202,8 +154,7 @@ const PokemonDetail = (props) => {
             );
           }
         })
-      }else{
-        
+      }else{   
         confirmAlert({
           customUI: ({ onClose }) => {
             const timer = setTimeout(() => {
@@ -233,7 +184,7 @@ const PokemonDetail = (props) => {
                 :
                 <Detail>
                     <DetailTop>
-                      <DetailTopLeft>
+                      <Flex>
                         <PokeImg
                             src={pokemon.sprites.front_default}
                             alt=""
@@ -241,13 +192,13 @@ const PokemonDetail = (props) => {
                         <PokeTitle>
                             <p>#{pokemon.id}</p>
                             <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
-                            <TypeContainer>
+                            <Flex>
                                 {pokemon.types.map((x) => (
                                     <Type color={x.type.name} key={x.type.name} >{x.type.name.charAt(0).toUpperCase()+ x.type.name.slice(1)}</Type>
                                 ))}
-                            </TypeContainer>
+                            </Flex>
                         </PokeTitle>
-                      </DetailTopLeft>
+                      </Flex>
                       <BtnCont>
                         <Button onClick={catchPoke} to='#'>Catch</Button>
                       </BtnCont>

@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { useQuery } from "@apollo/client";
 import { GET_POKEMON } from "../../apollo/Queries";
-import {Container} from "../../components/Shared";
+import {Container, ListContainer} from "../../components/SharedStyle";
 import Hero from './components/Hero';
 import styled from "@emotion/styled";
 import {Loading, Navbar, Card} from '../../components';
 import {FaArrowLeft, FaArrowRight} from 'react-icons/fa';
+import { css } from '@emotion/react'
 
 const ContentContainer = styled.div`
   background-color:white;
@@ -13,14 +14,6 @@ const ContentContainer = styled.div`
   min-height:45rem;
   padding: 0 2%;
 `
-
-const ListContainer = styled.div`
-    display:flex;
-    justify-content:space-between;
-    flex-wrap: wrap;
-    
-`
-
 const Pagination = styled.div`
   padding: 2rem 0;
   display: flex;
@@ -31,16 +24,16 @@ const Pagination = styled.div`
       padding: 0 1rem;
   }
 `
-
-const ArrowLeft = styled(FaArrowLeft)`
+const Arrow = css`
     height:1.5rem;
     width:1.5rem;
     cursor:pointer;
 `
+const ArrowLeft = styled(FaArrowLeft)`
+    ${Arrow}
+`
 const ArrowRight = styled(FaArrowRight)`
-    height:1.5rem;
-    width:1.5rem;
-    cursor:pointer;
+    ${Arrow}
 `
 
 const PokemonList = () => {

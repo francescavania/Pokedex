@@ -110,40 +110,30 @@ const Card = ({pokemon, myPokemon = false, onClick}) => {
                 </CardContainer>
             </CardBind>
             :
-
             <CardBind>
                 <CardContainer type={poke.types[0].type.name} to={`detail/${pokemon.name}`}>
                     <BgCardImage src={bgCard} alt=""/>
                     <CardContent>
-                        <PokeImg
-                            src={poke.sprites.front_default}
-                            alt=""
-                        />
+                        <PokeImg src={poke.sprites.front_default} alt=""/>
                         <CardDetail>
                         {
                             myPokemon ?
                             <>
                                 <h3>{poke.name.charAt(0).toUpperCase()+ poke.name.slice(1)}</h3>
                                 <h1>{pokemon.nickname.charAt(0).toUpperCase()+ pokemon.nickname.slice(1)}</h1>
-                                <TypeContainer>
-                                    {poke.types.map((x,index) => (
-                                        index<2 ?
-                                        <Type key={x.type.name} >{x.type.name.charAt(0).toUpperCase()+ x.type.name.slice(1)}</Type>:null
-                                    ))}
-                                </TypeContainer>
                             </>
                             :
                             <>
                                 <h3>{"#"+poke.id}</h3>
                                 <h1>{poke.name.charAt(0).toUpperCase()+ poke.name.slice(1)}</h1>
-                                <TypeContainer>
+                            </>
+                        }
+                        <TypeContainer>
                                     {poke.types.map((x,index) => (
                                         index<2 ?
                                         <Type key={x.type.name} >{x.type.name.charAt(0).toUpperCase()+ x.type.name.slice(1)}</Type>:null
                                     ))}
                                 </TypeContainer>
-                            </>
-                        }
                         </CardDetail>
                     </CardContent>
                 </CardContainer>
@@ -155,52 +145,6 @@ const Card = ({pokemon, myPokemon = false, onClick}) => {
                     :null
                 }
             </CardBind>
-
-            // <CardBind>
-            // <CardContainer type={poke.types[0].type.name} to={`detail/${pokemon.name}`}>
-            //     {/* <BgCardImage src={bgCard} alt=""/> */}
-            //     <CardContent>
-            //         <PokeImg
-            //             src={poke.sprites.front_default}
-            //             alt=""
-            //         />
-            //         <CardDetail>
-            //             {
-            //                 myPokemon ?
-            //                 <>
-            //                     <h1>{pokemon.nickname.charAt(0).toUpperCase()+ pokemon.nickname.slice(1)}</h1>
-            //                     <h3>{poke.name.charAt(0).toUpperCase()+ poke.name.slice(1)}</h3>
-            //                     <TypeContainer>
-            //                         {poke.types.map((x,index) => (
-            //                             index<2 ?
-            //                             <Type key={x.type.name} >{x.type.name.charAt(0).toUpperCase()+ x.type.name.slice(1)}</Type>:null
-            //                         ))}
-            //                     </TypeContainer>
-            //                 </>
-            //                 :
-            //                 <>
-            //                     <h1>{poke.name.charAt(0).toUpperCase()+ poke.name.slice(1)}</h1>
-            //                     <h3>{"#"+poke.id}</h3>
-            //                     <TypeContainer>
-            //                         {poke.types.map((x,index) => (
-            //                             index<2 ?
-            //                             <Type key={x.type.name} >{x.type.name.charAt(0).toUpperCase()+ x.type.name.slice(1)}</Type>:null
-            //                         ))}
-            //                     </TypeContainer>
-            //                 </>
-            //             }
-            //         </CardDetail>
-            //     </CardContent>
-            // </CardContainer>
-            // {
-            //     myPokemon ?
-                // <ButtonCont>
-                //     <ReleaseButton onClick={onClick}>Release</ReleaseButton>
-                // </ButtonCont>
-            //     :null
-            // }
-            // </CardBind>
-            
         }
         </>       
     )

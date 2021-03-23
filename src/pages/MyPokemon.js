@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navbar} from '../components';
 import styled from "@emotion/styled";
-import {Container} from "../components/Shared";
+import {Container, ListContainer, AlertContainer, AlertButton} from "../components/SharedStyle";
 import titleImg from '../assets/images/mypoke.png';
 import dispatch from '../apollo/Reducer';
 import { useReactiveVar } from "@apollo/client";
@@ -30,44 +30,6 @@ const ContentContainer = styled.div`
   padding: 0 2%;
   padding-bottom:1rem;
   
-`
-const ListContainer = styled.div`
-  display:flex;
-  justify-content:space-between;
-  flex-wrap: wrap;
-`
-const AlertContainer = styled.div`
-    /* padding: 0 3rem 3rem 3rem; */
-    padding: 3rem;
-    background-color:white;
-    box-shadow: 0 4px 8px rgb(204 204 204);
-    align-items:center;
-    text-align:center;
-
-    h1{
-      font-size: 3rem;
-      padding-bottom:0.5rem;
-    }
-    p{
-      font-size: 1.4rem;
-      padding-bottom:1rem;
-    }
-    img{
-      max-width:12rem;
-      padding-bottom:1rem;
-    }
-`
-
-const AlertButton = styled.button`
-    cursor: pointer;
-    border:none;
-    font-size: 1.4rem;
-    border-radius:3px;
-    font-weight:bold;
-    color:white;
-    background:${({cancel}) => (cancel ? 'red' : '#03ac0e')};
-    padding:1rem 1.5rem;
-    margin:0 1rem;
 `
 
 const MyPokemon = () => {
@@ -118,10 +80,7 @@ const MyPokemon = () => {
         <Navbar back={true}/>
         <Container>
             <TitleContainer>
-                <TitleImg 
-                    src={titleImg}
-                    alt=""
-                />
+                <TitleImg src={titleImg} alt=""/>
             </TitleContainer>
             <ContentContainer>
                 <ListContainer>

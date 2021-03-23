@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "@emotion/styled";
-import {Container} from "./Shared";
+import {Container} from "./SharedStyle";
 
 const FooterContainer = styled.div`
     border-top:1px solid #e8e8e8;
