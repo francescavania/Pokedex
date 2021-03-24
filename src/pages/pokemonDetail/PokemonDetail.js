@@ -19,7 +19,7 @@ import dispatch from '../../apollo/Reducer';
 const DetailContainer = styled.div`
     background-color:white;
     padding-top:6rem;
-    min-height:70.5rem;
+    min-height:64.7rem;
 `
 const LoadingContainer = styled.div`
     display:flex;

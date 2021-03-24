@@ -3,7 +3,7 @@ import GlobalStyle from "./GlobalStyle";
 import {  PokemonList, PokemonDetail, MyPokemon  } from './pages'
 import { ApolloProvider} from "@apollo/client";
 import ApolloClient from "apollo-boost";
-import Footer from './components/Footer';
+import {Footer, BottomTab} from './components';
 import dispatch from "./apollo/Reducer";
 
 window.dispatch = dispatch;
@@ -26,6 +26,7 @@ function App() {
           <Route path="/detail/:name" component={PokemonDetail} exact />
         </Switch>
         <Footer/>
+        <BottomTab/>
       </Router>
     </ApolloProvider>
     </>
