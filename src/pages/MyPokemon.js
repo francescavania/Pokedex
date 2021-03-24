@@ -26,7 +26,7 @@ const TitleImg = styled.img`
 const ContentContainer = styled.div`
   background-color:white;
   margin-top:1rem;
-  min-height:54.5rem;
+  min-height:48.7rem;
   padding: 0 2%;
   padding-bottom:1rem;
   

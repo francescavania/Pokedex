@@ -26,7 +26,7 @@ const LoadingContainer = styled.div`
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    height:60rem;
+    height:54rem;
 `
 const Detail = styled.div`
     padding:2rem;
