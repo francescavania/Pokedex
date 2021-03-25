@@ -36,6 +36,7 @@ const DetailTop = styled.div`
     display:flex;
     padding-bottom:1rem;
     justify-content:space-between;
+    flex-wrap:wrap;
 `
 
 const PokeImg = styled.img`
@@ -43,7 +44,7 @@ const PokeImg = styled.img`
 `
 const PokeTitle = styled.div`
     padding:0 3rem;
-    flex:2;
+    /* flex:2; */
 
     p{
         font-size:1.4rem;
@@ -66,9 +67,21 @@ const Type = styled.div`
     margin-right:0.5rem;
     border-radius:5px;
 `
+const BtnContTop = styled.div`
+    /* display:flex;
+    justify-content:center; */
+    padding-top:1rem;
+    @media (max-width: 383px) {
+        display:none;
+    }
+`
 const BtnCont = styled.div`
-    display:flex;
-    justify-content:center;
+    display:none;
+    
+    @media (max-width: 383px) {
+        display:flex;
+        justify-content:center;
+    }
 `
 
 const PokemonDetail = (props) => {
@@ -206,9 +219,9 @@ const PokemonDetail = (props) => {
                             </Flex>
                         </PokeTitle>
                       </Flex>
-                      {/* <BtnCont>
+                      <BtnContTop>
                         <Button onClick={catchPoke} to='#'>Catch</Button>
-                      </BtnCont> */}
+                      </BtnContTop>
                     </DetailTop>
                     <TabDetail pokemon={pokemon} color={color}/>
                     <BtnCont>

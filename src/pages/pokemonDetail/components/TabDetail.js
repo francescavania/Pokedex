@@ -5,7 +5,7 @@ import Range from "./Range";
 
 import styled from "@emotion/styled";
 const TabsContainer = styled(Tabs)`
-    min-height:40rem;
+    min-height:35rem;
     font-size: 3rem;
 `
 const MovesContainer = styled.div`
@@ -23,7 +23,7 @@ const Move = styled.div`
 `;
 const StatisticContainer = styled.div`
     margin-right:1rem;
-    padding-top:1.5rem;
+    padding-top:1rem;
 `;
 
 const TabDetail = ({pokemon, color}) => {
