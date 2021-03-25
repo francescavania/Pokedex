@@ -16,6 +16,12 @@ const FooterContainer = styled.div`
         color:#989898;
         padding:1rem;
     }
+
+    @media (max-width: 425px) {
+        p{
+            font-size:clamp(0.2rem,1.2rem,1.2rem);
+        }
+    }
 `
 
 const Footer = () => {

@@ -3,6 +3,12 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
     width: 48rem;
     margin:0 auto;
+
+    @media (max-width: 425px) {
+      width: 100%;
+      margin:0 auto;
+    }
+    
 `;
 
 export const ListContainer = styled.div`

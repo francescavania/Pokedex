@@ -26,6 +26,10 @@ const BottomContainer = styled.nav`
     border-top: 1px solid #e8e8e8;
     justify-content:space-around;
     
+    @media (max-width: 425px) {
+      width: 100%;
+      margin:0 auto;
+    }
 `;
 
 const NavItem = styled.nav`

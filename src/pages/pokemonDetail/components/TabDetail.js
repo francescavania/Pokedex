@@ -11,6 +11,7 @@ const TabsContainer = styled(Tabs)`
 const MovesContainer = styled.div`
     display:flex;
     flex-wrap:wrap;
+    margin-bottom:1rem;
 `;
 
 const Move = styled.div`

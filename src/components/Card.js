@@ -39,21 +39,41 @@ const CardContent = styled.div`
 const PokeImg = styled.img`
     max-width:11rem;
     padding-left:1rem;
+
+    @media (max-width: 425px) {
+        max-width:50%;
+        padding-left:0.5rem;
+    }
 `
 
 const CardDetail = styled.div`
     padding:1.5rem 0 1.5rem 0.7rem;
-    flex:2;
+    flex-wrap:wrap;
+    @media (max-width: 425px) {
+        padding:1.5rem 0 1.5rem 0rem;
+    }
     h1{
         color:#0d0c22;
         font-size:1.6rem;
         padding-bottom:1rem;
+        @media (max-width: 425px) {
+            font-size:clamp(0.5rem,1.4rem,1.4rem)
+        }
+        @media (max-width: 398px){
+            font-size:clamp(0.5rem,1.3rem,1.3rem)
+        }
+        @media (max-width: 320px){
+            font-size:clamp(0.5rem,1.1rem,1.2rem)
+        }
     }
 
     h3{
         color:white;
         font-size:1.2rem;
         padding-bottom:0.3rem;
+        @media (max-width: 398px){
+            font-size:clamp(0.5rem,1.1rem,1.2rem)
+        }
     }
 `;
 
@@ -71,6 +91,21 @@ const Type = styled.div`
     margin-right:0.5rem;
     border-radius:5px;
     font-weight:bold;
+    @media (max-width: 425px) {
+        padding:0.5rem 0.6rem;
+        margin-right:0.4rem;
+        font-size:1rem;
+    }
+    @media (max-width: 398px) {
+        padding:0.4rem 0.5rem;
+        margin-right:0.25rem;
+        font-size:clamp(0.2rem,0.9rem,1rem);
+    }
+    @media (max-width: 342px) {
+        padding:0.4rem 0.5rem;
+        margin-right:0.2rem;
+        font-size:clamp(0.2rem,0.7rem,0.8rem);
+    }
 `;
 
 const ButtonCont = styled.div`

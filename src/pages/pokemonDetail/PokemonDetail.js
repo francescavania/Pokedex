@@ -67,7 +67,8 @@ const Type = styled.div`
     border-radius:5px;
 `
 const BtnCont = styled.div`
-    padding-top:1rem;
+    display:flex;
+    justify-content:center;
 `
 
 const PokemonDetail = (props) => {
@@ -205,11 +206,14 @@ const PokemonDetail = (props) => {
                             </Flex>
                         </PokeTitle>
                       </Flex>
-                      <BtnCont>
+                      {/* <BtnCont>
                         <Button onClick={catchPoke} to='#'>Catch</Button>
-                      </BtnCont>
+                      </BtnCont> */}
                     </DetailTop>
                     <TabDetail pokemon={pokemon} color={color}/>
+                    <BtnCont>
+                      <Button onClick={catchPoke} to='#'>Catch</Button>
+                    </BtnCont>
                 </Detail>
             } 
             </DetailContainer>

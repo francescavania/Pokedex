@@ -16,12 +16,22 @@ import ReactPlayer from 'react-player'
 const TitleContainer = styled.div`
     height:15rem;
     background-color:#f3e350;
+    display:flex;
+    justify-content:center;
+    @media (max-width: 425px) {
+      width: 100%;
+      margin:0 auto;
+    }
 `;
 
 const TitleImg = styled.img`
     width:48rem;
-    object-fit:cover;
-    padding:6.5rem;
+    object-fit:contain;
+    padding-top:6.5rem;
+    @media (max-width: 425px) {
+      width: 90%;
+      margin:0 auto;
+    }
 `
 
 const ContentContainer = styled.div`
