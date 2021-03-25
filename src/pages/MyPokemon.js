@@ -2,13 +2,13 @@ import React from 'react'
 import { Navbar} from '../components';
 import styled from "@emotion/styled";
 import {Container, ListContainer, AlertContainer, AlertButton} from "../components/SharedStyle";
-import titleImg from '../assets/images/mypoke.png';
+import titleImg from '../assets/images/mypoke.svg';
 import dispatch from '../apollo/Reducer';
 import { useReactiveVar } from "@apollo/client";
 import { Card } from "../components";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import question from '../assets/images/question.png';
+import question from '../assets/images/question.svg';
 import run from '../assets/images/run.gif';
 import { myPokemons } from "../apollo/Reducer";
 

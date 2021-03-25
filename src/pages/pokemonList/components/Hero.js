@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "@emotion/styled";
-import banner from '../../../assets/images/banner.png';
+import banner from '../../../assets/images/banner.svg';
 
 
 const HeroContainer = styled.div`
