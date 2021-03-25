@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "@emotion/styled";
-import logo from '../assets/images/loading.gif';
+import pokeVid from "../assets/videos/loading.mp4";
+import ReactPlayer from 'react-player'
 
 const Load = styled.div`
     padding:2rem;
@@ -15,7 +16,7 @@ const PokeImg = styled.img`
 const Loading = () => {
     return (
         <Load>
-            <PokeImg src={logo} alt=''/>
+            <ReactPlayer width='120px' height='120px' url={pokeVid} playing={true} loop={true} muted={true}/>
         </Load>
     )
 }

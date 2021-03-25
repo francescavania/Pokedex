@@ -39,6 +39,12 @@ export const AlertContainer = styled.div`
       margin-bottom:1rem;
     }
 `
+export const AlertIconCont = styled.div`
+    display:flex;
+    justify-content:center;
+    padding-bottom:1rem;
+`
+
 export const AlertButton = styled.button`
     cursor: pointer;
     border:none;

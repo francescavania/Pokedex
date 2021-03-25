@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from "@emotion/styled";
-import {Container, AlertContainer, AlertButton} from "../../components/SharedStyle";
+import {Container, AlertContainer, AlertButton, AlertIconCont} from "../../components/SharedStyle";
 import { Button , Loading, Navbar} from '../../components';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css'; 
-import img1 from '../../assets/images/loading.gif';
-import img2 from '../../assets/images/sukses.gif';
-import img3 from '../../assets/images/fail.gif';
+import suksesVid from '../../assets/videos/sukses.mp4';
+import failVid from '../../assets/videos/fail.mp4';
 import { handleColorType } from "../../config/Color";
 import {useParams , useHistory} from "react-router-dom";
 import TabDetail from "./components/TabDetail";
@@ -15,6 +14,8 @@ import { useQuery, useReactiveVar  } from "@apollo/client";
 import { GET_POKEMON_DETAIL } from "../../apollo/Queries";
 import { myPokemons } from "../../apollo/Reducer";
 import dispatch from '../../apollo/Reducer';
+import pokeVid from "../../assets/videos/loading.mp4";
+import ReactPlayer from 'react-player'
 
 const DetailContainer = styled.div`
     background-color:white;
@@ -99,7 +100,9 @@ const PokemonDetail = (props) => {
           }
           return (
             <AlertContainer>
-              <img src={img2} alt=''/>
+              <AlertIconCont>
+                <ReactPlayer width='35%' height='35%' url={suksesVid} playing={true} loop={true} muted={true}/>
+              </AlertIconCont>
               <h1>Pokemon Saved!</h1>
               <AlertButton onClick={handleClick}>My Pokemon</AlertButton>
             </AlertContainer>
@@ -136,7 +139,9 @@ const PokemonDetail = (props) => {
           customUI: ({ onClose }) => {
             return (
               <AlertContainer>
-                <img src={img1} alt=''/>
+                <AlertIconCont>
+                  <ReactPlayer width='35%' height='35%' url={pokeVid} playing={true} loop={true} muted={true}/>
+                </AlertIconCont>
                 <h1>Pokemon Catched!</h1>
                 <p>Give a nickname for your pokemon..</p>
                 <input type="text" name="nickname" maxLength={10}  placeholder="Nickname (max. 10 character)" onChange={(e) => {nick = e.target.value}}/>
@@ -161,7 +166,9 @@ const PokemonDetail = (props) => {
             }, 1500);
             return (
               <AlertContainer>
-                <img src={img3} alt=''/>
+                <AlertIconCont>
+                  <ReactPlayer width='35%' height='35%' url={failVid} playing={true} loop={true} muted={true}/>
+                </AlertIconCont>
                 <h1>Pokemon Run Away!</h1>
               </AlertContainer>
             );

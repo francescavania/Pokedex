@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navbar} from '../components';
 import styled from "@emotion/styled";
-import {Container, ListContainer, AlertContainer, AlertButton} from "../components/SharedStyle";
+import {Container, ListContainer, AlertContainer, AlertButton, AlertIconCont} from "../components/SharedStyle";
 import titleImg from '../assets/images/mypoke.svg';
 import dispatch from '../apollo/Reducer';
 import { useReactiveVar } from "@apollo/client";
@@ -9,8 +9,9 @@ import { Card } from "../components";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import question from '../assets/images/question.svg';
-import run from '../assets/images/run.gif';
+import run from '../assets/videos/run.mp4';
 import { myPokemons } from "../apollo/Reducer";
+import ReactPlayer from 'react-player'
 
 const TitleContainer = styled.div`
     height:15rem;
@@ -47,7 +48,9 @@ const MyPokemon = () => {
                 }, 1500);
               return (
                 <AlertContainer>
-                  <img src={run} alt=''/>
+                  <AlertIconCont>
+                        <ReactPlayer width='120px' height='120px' url={run} playing={true} loop={true} muted={true}/>
+                    </AlertIconCont>
                   <h1>Pokemon Released!</h1>
                 </AlertContainer>
               );
