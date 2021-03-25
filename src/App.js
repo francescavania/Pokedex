@@ -16,7 +16,7 @@ function App() {
   });
 
   return (
-    <>
+    <div className="App">
     <GlobalStyle/>
     <ApolloProvider client={client}>
       <Router>
@@ -29,7 +29,7 @@ function App() {
         <BottomTab/>
       </Router>
     </ApolloProvider>
-    </>
+    </div>
   );
 }
 

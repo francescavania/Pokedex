@@ -109,7 +109,6 @@ const PokemonDetail = (props) => {
     }
 
     const checkNick = (nick) =>{
-      console.log(nick,"nick check")
       if(nick === undefined || nick === ''){
         alert('please give your pokemon a nickname')
       }else{
@@ -157,7 +156,7 @@ const PokemonDetail = (props) => {
       }else{   
         confirmAlert({
           customUI: ({ onClose }) => {
-            const timer = setTimeout(() => {
+            setTimeout(() => {
               onClose()
             }, 1500);
             return (

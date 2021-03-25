@@ -42,7 +42,7 @@ const MyPokemon = () => {
         })
         confirmAlert({
             customUI: ({ onClose }) => {
-                const timer = setTimeout(() => {
+                setTimeout(() => {
                     onClose()
                 }, 1500);
               return (

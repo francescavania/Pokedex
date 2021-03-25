@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from "@emotion/styled";
+import banner from '../../../assets/images/banner.png';
+
 
 const HeroContainer = styled.div`
     height:25rem;
@@ -9,14 +11,14 @@ const HeroContainer = styled.div`
 const HeroImg = styled.img`
     width:48rem;
     object-fit:cover;
-    padding:7rem 8.5rem 7rem 7rem;
+    padding:7rem 8rem 7rem 7rem;
 `
 
 const Hero = () => {
     return (
         <HeroContainer>
             <HeroImg 
-                src="https://www.freepnglogos.com/uploads/gotta-catch-em-all-transparent-pokemon-logo-11.png"
+                src={banner}
                 alt=""
             />
             

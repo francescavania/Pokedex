@@ -1,7 +1,6 @@
-import React,{useState} from 'react'
+import React from 'react'
 import styled from "@emotion/styled";
 import {Container} from "./SharedStyle";
-import {useHistory} from "react-router-dom"
 import { NavLink } from 'react-router-dom';
 import { CgHome,CgPokemon } from "react-icons/cg";
 
@@ -43,7 +42,6 @@ const IconTab = styled.nav`
 
 
 const BottomTab = () => {
-    const history = useHistory()
     return (
         <Container>
             <BottomContainer>
