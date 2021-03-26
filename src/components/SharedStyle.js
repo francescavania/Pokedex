@@ -33,7 +33,6 @@ export const AlertContainer = styled.div`
     }
     img{
       max-width:12rem;
-      /* padding-bottom:1rem; */
     }
     input{
       width:100%;
@@ -44,11 +43,6 @@ export const AlertContainer = styled.div`
       border: 1px solid #ccc;
       margin-bottom:1rem;
     }
-`
-export const AlertIconCont = styled.div`
-    display:flex;
-    justify-content:center;
-    padding-bottom:1rem;
 `
 
 export const AlertButton = styled.button`
