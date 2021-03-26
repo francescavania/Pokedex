@@ -40,8 +40,6 @@ const PokeImg = styled.img`
 `
 const PokeTitle = styled.div`
     padding:0 3rem;
-    /* flex:2; */
-
     p{
         font-size:1.4rem;
         color:#989898;
@@ -64,8 +62,6 @@ const Type = styled.div`
     border-radius:5px;
 `
 const BtnContTop = styled.div`
-    /* display:flex;
-    justify-content:center; */
     padding-top:1rem;
     @media (max-width: 383px) {
         display:none;
@@ -117,9 +113,6 @@ const PokemonDetail = (props) => {
                     src={pokemon.sprites.front_default}
                     alt=""
                 />
-              {/* <AlertIconCont>
-                <ReactPlayer width='35%' height='35%' url={suksesVid} playing={true} loop={true} muted={true}/>
-              </AlertIconCont> */}
               <h1>Pokemon Saved!</h1>
               <AlertButton onClick={handleClick}>My Pokemon</AlertButton>
             </AlertContainer>
