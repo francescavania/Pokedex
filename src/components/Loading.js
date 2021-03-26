@@ -27,7 +27,6 @@ const Loading = () => {
     return (
         <Load>
             <PokeImg src={pokeball} alt=""/>
-            {/* <ReactPlayer width='120px' height='120px' url={pokeVid} playing={true} loop={true} muted={true}/> */}
         </Load>
     )
 }
