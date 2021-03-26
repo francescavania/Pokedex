@@ -9,9 +9,9 @@ const Load = styled.div`
     justify-content: center;
 `;
 
-const PokeImg = styled.img`
-    max-width:12rem;
-`
+// const PokeImg = styled.img`
+//     max-width:12rem;
+// `
 
 const Loading = () => {
     return (

@@ -17,7 +17,7 @@ export const ListContainer = styled.div`
     flex-wrap: wrap;
 `
 export const AlertContainer = styled.div`
-    padding: 3rem;
+    padding: 2rem;
     background-color:white;
     box-shadow: 0 4px 8px rgb(204 204 204);
     align-items:center;
@@ -33,7 +33,7 @@ export const AlertContainer = styled.div`
     }
     img{
       max-width:12rem;
-      padding-bottom:1rem;
+      /* padding-bottom:1rem; */
     }
     input{
       width:100%;

@@ -8,6 +8,7 @@ export const GET_POKEMON_DETAIL = gql`
       status
       sprites {
         front_default
+        back_default
       }
       abilities {
         ability {
@@ -70,3 +71,13 @@ export const GET_POKEMON = gql`
   }
 `;
 
+export const GET_POKEMON_BACK_IMG = gql`
+  query pokemon($name: String!) {
+    pokemon(name: $name) {
+      id
+      sprites {
+        back_default
+      }
+    }
+  }
+`;
