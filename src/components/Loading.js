@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from "@emotion/styled";
-import pokeVid from "../assets/videos/loading.mp4";
-import ReactPlayer from 'react-player'
+import pokeball from "../assets/images/pokeball.svg";
+import { keyframes } from '@emotion/react'
+
 
 const Load = styled.div`
     padding:2rem;
@@ -9,14 +10,24 @@ const Load = styled.div`
     justify-content: center;
 `;
 
-// const PokeImg = styled.img`
-//     max-width:12rem;
-// `
+const spin = keyframes`
+ 0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`
+const PokeImg = styled.img`
+    max-width:10rem;
+    animation: ${spin} 2s linear infinite;
+`
 
 const Loading = () => {
     return (
         <Load>
-            <ReactPlayer width='120px' height='120px' url={pokeVid} playing={true} loop={true} muted={true}/>
+            <PokeImg src={pokeball} alt=""/>
+            {/* <ReactPlayer width='120px' height='120px' url={pokeVid} playing={true} loop={true} muted={true}/> */}
         </Load>
     )
 }
